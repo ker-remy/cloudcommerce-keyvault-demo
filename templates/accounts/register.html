@@ -24,9 +24,9 @@
   <div class="register-box">
 
     <div class="login-logo">
-        <a target="_blank" rel="noopener noreferrer" 
-           href="https://app-generator.dev/product/adminlte/flask/"><b>Admin</b>LTE Flask</a>
-    </div>    
+        <a href="#">
+            <b>CloudCommerce</b> SaaS</a>
+    </div> 
 
     <div class="card">
       <div class="card-body register-card-body">
@@ -88,13 +88,18 @@
 
         <br />
         <div class="text-center">
-            Have an account? <a href="{{ url_for('authentication_blueprint.login') }}" class="text-center">Login</a>
-            <br />
-            <br />
-            &copy; ColorLib 
-            <a target="_blank" rel="noopener noreferrer"
-               href="https://app-generator.dev/product/adminlte/flask/"><b>Admin</b>LTE</a> 
-            - coded by <a target="_blank" rel="noopener noreferrer" href="https://app-generator.dev">App-Generator.dev</a>.
+            Not a member?
+            <a href="{{ url_for('authentication_blueprint.register') }}" class="text-center">
+                Create Account
+            </a>
+
+            <br><br>
+
+            <small class="text-muted">
+                © 2026 CloudCommerce SaaS Platform
+                <br>
+                Azure Key Vault Secure Authentication System
+            </small>
         </div>
 
       </div>
