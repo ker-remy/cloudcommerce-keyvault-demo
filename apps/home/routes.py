@@ -7,12 +7,27 @@ from apps.home import blueprint
 from flask import render_template, request
 from flask_login import login_required
 from jinja2 import TemplateNotFound
-
+import os
 
 @blueprint.route('/index')
 def index():
     return render_template('home/index.html', segment='index')
 
+@blueprint.route('/security-center.html')
+@login_required
+def security_center():
+
+    payment_secret = os.getenv("PAYMENT_API_SECRET")
+
+    keyvault_status = "Connected" if payment_secret else "Not Connected"
+    secret_status = "Protected" if payment_secret else "Not Protected"
+
+    return render_template(
+        'home/security-center.html',
+        segment='security-center',
+        keyvault_status=keyvault_status,
+        secret_status=secret_status
+    )
 @blueprint.route('/<template>')
 @login_required
 def route_template(template):
