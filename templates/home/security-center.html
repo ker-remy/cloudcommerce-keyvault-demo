@@ -1,0 +1,120 @@
+{% extends "layouts/base.html" %}
+
+{% block title %} Security Center {% endblock %}
+
+{% block body_class %} sidebar-mini {% endblock body_class %}
+
+{% block stylesheets %}
+<link rel="stylesheet" href="{{ url_for('static', filename='assets/css/adminlte.min.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='assets/plugins/fontawesome-free/css/all.min.css') }}">
+{% endblock stylesheets %}
+
+{% block content %}
+
+<div class="content-wrapper">
+
+  <section class="content-header">
+    <div class="container-fluid">
+      <h1>CloudCommerce Security Center</h1>
+      <p class="text-muted">Azure Key Vault and Managed Identity Integration</p>
+    </div>
+  </section>
+
+  <section class="content">
+    <div class="container-fluid">
+
+      <div class="row">
+
+        <div class="col-lg-3 col-6">
+          <div class="small-box bg-success">
+            <div class="inner">
+              <h3>Connected</h3>
+              <p>Azure Key Vault</p>
+            </div>
+            <div class="icon">
+              <i class="fas fa-key"></i>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-3 col-6">
+          <div class="small-box bg-info">
+            <div class="inner">
+              <h3>Enabled</h3>
+              <p>Managed Identity</p>
+            </div>
+            <div class="icon">
+              <i class="fas fa-user-shield"></i>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-3 col-6">
+          <div class="small-box bg-warning">
+            <div class="inner">
+              <h3>Protected</h3>
+              <p>Payment API Secret</p>
+            </div>
+            <div class="icon">
+              <i class="fas fa-lock"></i>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-3 col-6">
+          <div class="small-box bg-primary">
+            <div class="inner">
+              <h3>RBAC</h3>
+              <p>Access Controlled</p>
+            </div>
+            <div class="icon">
+              <i class="fas fa-shield-alt"></i>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <h3 class="card-title">Secure Secret Architecture</h3>
+        </div>
+        <div class="card-body">
+          <h5>
+            User → CloudCommerce Flask App → Azure App Service → Managed Identity → Azure Key Vault → Payment API Secret
+          </h5>
+          <p class="mt-3">
+            This application does not store payment API credentials inside the source code.
+            The secret is stored securely in Azure Key Vault and accessed by the application
+            using Managed Identity.
+          </p>
+        </div>
+      </div>
+
+      <div class="card card-outline card-success">
+        <div class="card-header">
+          <h3 class="card-title">Security Explanation</h3>
+        </div>
+        <div class="card-body">
+          <ul>
+            <li>Payment API secret is not hardcoded in Python files.</li>
+            <li>Secret is stored in Azure Key Vault.</li>
+            <li>Azure App Service uses Managed Identity for secure authentication.</li>
+            <li>RBAC controls which app can access the secret.</li>
+            <li>The real secret value is never displayed to users.</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+</div>
+
+{% endblock content %}
+
+{% block javascripts %}
+<script src="{{ url_for('static', filename='assets/plugins/jquery/jquery.min.js') }}"></script>
+<script src="{{ url_for('static', filename='assets/plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+<script src="{{ url_for('static', filename='assets/js/adminlte.min.js') }}"></script>
+{% endblock javascripts %}
